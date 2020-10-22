@@ -1,0 +1,93 @@
+#import random function to pull up random answers from 8 ball
+import random
+#import sys to exit the program if name isn't valid
+import sys
+#import time to add a delay before answer
+import time
+
+#create a list of 20 answers for the 8 ball to choose from
+answers = ['I would like to say yes, ', 
+'Gonna be a no from me, dog. I mean, ',
+'It is not likely, ',
+'Oh boy, I hope so, ',
+'I cannot answer that at this time, ',
+'I need more time to consult the stars about that, ',
+'I am flattered that you think I am qualified to answer that, ',
+'No way, Jose. I mean, ',
+'Come on, that is just silly, ',
+'I have not learned much about this yet, ',
+'The odds seem to be in your favor, ',
+'Absolutely, definitely, indubitably, ',
+'Maybe you should google that one, ',
+'I had a brain fart, ask me again, ',
+'I really wish I knew, ',
+'Wow, that is a tough one, ',
+'You will see in time, be patient, ',
+'It seems the universe is working in your favor, ',
+'If you keep trying, you might get a better answer, but for now the future looks bleak, ',
+'I can confidently say... not a chance, ',
+'No doubt about it, ',
+'The choice is yours, ',
+'Ha ha, very funny, ',
+'Nice try, I already told you, ']
+
+
+print('Hello, I am a Magic 8 Ball.')
+time.sleep(1)
+
+first = input('What is your first name?')
+last = input('And your last name?')
+
+#combine the names into one in order to check for valid characters
+combined_name = first + last
+#properly print the full name with a space in between the first and last with capital first letters
+full_name = first.title() + ' ' + last.title()
+name = first.title()
+
+#create a loop to determine if the name is valid
+if combined_name.isalpha():
+  print('Great, time to blow your mind, ' + full_name + '.')
+  time.sleep(1)
+else:
+  #address the issue of the user inputting an invalid name and ask them to try again
+  print("Come on, I know you know what your name is... Try again.")
+  sys.exit()
+  
+#define the game
+def game():
+  question = input('Now, ask me a question:')
+  print('Shake me so I can find an answer for you...')
+  time.sleep(3)
+  #print a random answer from the list of answers by using the random function
+  print(question + '...')
+  time.sleep(2)
+  print(answers[random.randint(0,23)]+ name +'.')
+  time.sleep(3)
+  
+  #ask the user if they would like to play again
+  reply = input('Would you like to play again? [Y/N]')
+  
+  if reply == 'Y':
+    print('Thank you.')
+    time.sleep(1)
+    return game()
+  if reply == 'y':
+    print('Thank you.')
+    time.sleep(1)
+    return game()
+  if reply == 'N':
+    print('Okay, see you next time!')
+    #quit the game
+    sys.exit()
+  elif reply == 'n':
+    print('What a shame. See you next time, ' + full_name +'.')
+    sys.exit()
+
+#execute the game
+game()
+
+
+
+
+
+
